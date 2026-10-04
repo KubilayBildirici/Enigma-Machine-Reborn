@@ -1,23 +1,24 @@
 """
-ROTOR - 2 --> MEKANIZMASI
-rotor 1 girdinisi donusturur.
-* Pozisyon her seferinde 6 artar.
+ROTOR - 3 --> MEKANIZMASI
+rotor 2 girdinisi donusturur.
+* Pozisyon her seferinde 9 artar.
 """
-from RotorSystem.rotor import Rotor, rotate_wiring
-from parameters import Parameters
 
-class Rotor2(Rotor):
-    def __new__(cls, sifreleme: str, ornek_cumle:str, rotor1_input: list):
-        print(f"Rotor 2 Creating.. --> {cls.__name__}")
+from parameters import Parameters
+from RotorSystem.rotor import Rotor, rotate_wiring
+
+class Rotor3(Rotor):
+    def __new__(cls, sifreleme: str, ornek_cumle:str, rotor2_input: list):
+        print(f"Rotor 3 Creating.. -> {cls.__new__}")
         instance = super().__new__(cls)
         return instance
     
-    def __init__(self, sifreleme:str, ornek_cumle:str, rotor1_input: list):
+    def __init__(self, sifreleme: str, ornek_cumle:str, rotor2_input: list):
         self.position = 0
         self.sifreleme = sifreleme
         self.ornek_cumle = ornek_cumle
         self.sifrelenmis_cumle = ""
-        self.rotor1_input = rotor1_input
+        self.rotor2_input = rotor2_input
     
     def __repr__(self):
         return (
@@ -28,17 +29,16 @@ class Rotor2(Rotor):
         )
     
     def __str__(self):
-        return (print(f"Rotor 1 - position: {self.position} --> Sifrelenmis cumle: {self.sifrelenmis_cumle}"))
-    
+        return (print(f"Rotor 3 - position: {self.position} --> Sifrelenmis cumle: {self.sifrelenmis_cumle}"))
     
     def build_mapping(self) -> list:
         liste = []
         
         sifreleme = rotate_wiring(sifreleme=self.sifreleme, position=self.position)
         
-        rotor_1_sifrelemesi = [tuple[1] for tuple in self.rotor1_input]
+        rotor_2_sifrelemesi = [tuple[1] for tuple in self.rotor2_input]
         
-        for harf, karsilik in zip(rotor_1_sifrelemesi, sifreleme.lower()):
+        for harf, karsilik in zip(rotor_2_sifrelemesi, sifreleme.lower()):
             liste.append((harf, karsilik))
         
         return liste
@@ -49,8 +49,7 @@ class Rotor2(Rotor):
             for x, y in liste:
                 if i == x:
                     self.sifrelenmis_cumle += y
-                    self.position = (self.position + 6) % 26
+                    self.position = (self.position + 9) % 26
                     print(self.position)
         
-        return (self.sifrelenmis_cumle, self.position, liste)
-        
+        return (self.sifrelenmis_cumle, self.position)
