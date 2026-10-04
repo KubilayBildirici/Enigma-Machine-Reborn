@@ -4,7 +4,7 @@ rotor 1 girdinisi donusturur.
 * Pozisyon her seferinde 6 artar.
 """
 from RotorSystem.rotor import Rotor, rotate_wiring
-from parameters import Parameters
+from typing import List, Tuple
 
 class Rotor2(Rotor):
     def __new__(cls, sifreleme: str, ornek_cumle:str, rotor1_input: list):
@@ -12,7 +12,7 @@ class Rotor2(Rotor):
         instance = super().__new__(cls)
         return instance
     
-    def __init__(self, sifreleme:str, ornek_cumle:str, rotor1_input: list):
+    def __init__(self, sifreleme:str, ornek_cumle:str, rotor1_input: list) -> None:
         self.position = 0
         self.sifreleme = sifreleme
         self.ornek_cumle = ornek_cumle
@@ -21,17 +21,21 @@ class Rotor2(Rotor):
     
     def __repr__(self):
         return (
-            self.position,
-            self.sifreleme,
-            self.ornek_cumle,
-            self.sifrelenmis_cumle
+            f"Rotor2(position={self.position}, "
+            f"sifreleme={self.sifreleme!r}, "
+            f"ornek_cumle={self.ornek_cumle!r}, "
+            f"sifrelenmis_cumle={self.sifrelenmis_cumle!r})"
+        )
+
+
+    def __str__(self):
+        return (
+            f"Rotor 2 - position: {self.position} "
+            f"--> Sifrelenmis cumle: {self.sifrelenmis_cumle}"
         )
     
-    def __str__(self):
-        return (print(f"Rotor 1 - position: {self.position} --> Sifrelenmis cumle: {self.sifrelenmis_cumle}"))
     
-    
-    def build_mapping(self) -> list:
+    def build_mapping(self) -> List[Tuple[str, str]]:
         liste = []
         
         sifreleme = rotate_wiring(sifreleme=self.sifreleme, position=self.position)
@@ -43,7 +47,7 @@ class Rotor2(Rotor):
         
         return liste
     
-    def encrypt(self) -> tuple:
+    def encrypt(self) -> Tuple[str, int, List[Tuple[str, str]]]:
         for i in self.ornek_cumle:
             liste = self.build_mapping()
             for x, y in liste:

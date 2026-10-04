@@ -8,7 +8,7 @@ ROTOR - 1 --> MEKANIZMASI
 """
 from RotorSystem.rotor import Rotor, rotate_wiring
 from parameters import Parameters
-
+from typing import List, Tuple
 
 class Rotor1(Rotor):
     def __new__(cls, sifreleme: str, ornek_cumle: str):
@@ -17,7 +17,7 @@ class Rotor1(Rotor):
         return instance
 
     
-    def __init__(self,sifreleme: str, ornek_cumle: str) -> None:
+    def __init__(self, sifreleme: str, ornek_cumle: str) -> None:
         self.position = 0
         self.sifreleme = sifreleme
         self.ornek_cumle = ornek_cumle
@@ -36,7 +36,7 @@ class Rotor1(Rotor):
 
 
     
-    def build_mapping(self) -> list:
+    def build_mapping(self) -> List[Tuple[str, str]]:
         liste = []
         
         sifreleme = rotate_wiring(self.sifreleme, position=self.position)
@@ -47,7 +47,7 @@ class Rotor1(Rotor):
         return liste
 
 
-    def encrypt(self) -> tuple:
+    def encrypt(self) -> Tuple:
         for i  in self.ornek_cumle:
             liste = self.build_mapping()
             for x, y in liste:

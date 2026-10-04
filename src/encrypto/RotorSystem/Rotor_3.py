@@ -3,8 +3,6 @@ ROTOR - 3 --> MEKANIZMASI
 rotor 2 girdinisi donusturur.
 * Pozisyon her seferinde 9 artar.
 """
-
-from parameters import Parameters
 from RotorSystem.rotor import Rotor, rotate_wiring
 
 class Rotor3(Rotor):
