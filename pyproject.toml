@@ -1,5 +1,25 @@
+[project]
+name = "enigma"
+version = "0.1.0"
+description = "Enigma machine system" 
+requires-python = ">=3.12"
+
 [tool.ruff]
 line-length = 88
+target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP"]
+select = [
+    "E", 
+    "F",
+    "W",
+    "I",
+    "UP",
+    "B",
+    "SIM",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

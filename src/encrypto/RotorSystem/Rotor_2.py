@@ -41,7 +41,7 @@ class Rotor2(Rotor):
 
         rotor_1_sifrelemesi = [tuple[1] for tuple in self.rotor1_input]
 
-        for harf, karsilik in zip(rotor_1_sifrelemesi, sifreleme.lower()):
+        for harf, karsilik in zip(rotor_1_sifrelemesi, sifreleme.lower(), strict=True):
             liste.append((harf, karsilik))
 
         return liste

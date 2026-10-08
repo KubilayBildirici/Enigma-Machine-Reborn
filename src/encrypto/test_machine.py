@@ -5,7 +5,7 @@ from RotorSystem.Rotor_2 import Rotor2
 from RotorSystem.Rotor_3 import Rotor3
 
 """
-test_1 = Rotor1(sifreleme=Parameters.rotor_1_sifrelemesi, 
+test_1 = Rotor1(sifreleme=Parameters.rotor_1_sifrelemesi,
 ornek_cumle=Parameters.test_cumlesi)
 sifrelenmis_cumle, position = test_1.encrypt()
 print(sifrelenmis_cumle)

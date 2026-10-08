@@ -38,7 +38,9 @@ class Rotor1(Rotor):
 
         sifreleme = rotate_wiring(self.sifreleme, position=self.position)
 
-        for harf, karsilik in zip(Parameters.alfabe.lower(), sifreleme.lower()):
+        for harf, karsilik in zip(
+            Parameters.alfabe.lower(), sifreleme.lower(), strict=True
+        ):
             liste.append((harf, karsilik))
 
         return liste
